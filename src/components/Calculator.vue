@@ -15,20 +15,20 @@
       </div>
   
       <!-- Formulario de Nuevo Gasto -->
-      <div class="mb-6">
-        <h3 class="text-lg font-semibold mb-2">Agregar Gasto</h3>
-        <div class="mb-4">
-          <label class="block text-gray-700">Descripción</label>
-          <input v-model="descripcionGasto" type="text" class="w-full p-2 border rounded" placeholder="Descripción del gasto">
-          <p v-if="descripcionError" class="text-red-500 text-sm">{{ descripcionError }}</p>
-        </div>
-        <div class="mb-4">
-          <label class="block text-gray-700">Monto</label>
-          <input v-model.number="montoGasto" type="number" min="0" class="w-full p-2 border rounded" placeholder="Monto del gasto">
-          <p v-if="montoError" class="text-red-500 text-sm">{{ montoError }}</p>
-        </div>
-        <button @click="addGasto" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Agregar Gasto</button>
+    <div class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Agregar Gasto</h3>
+      <div class="mb-4">
+        <label class="block text-gray-700">Descripción</label>
+        <input v-model="descripcionGasto" type="text" class="w-full p-2 border rounded" placeholder="Descripción del gasto">
+        <p v-if="descripcionError" class="text-red-500 text-sm">{{ descripcionError }}</p>
       </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">Monto</label>
+        <input v-model.number="montoGasto" type="number" min="0" class="w-full p-2 border rounded" placeholder="Monto del gasto">
+        <p v-if="montoError" class="text-red-500 text-sm">{{ montoError }}</p>
+      </div>
+      <button @click="addGasto" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Agregar Gasto</button>
+    </div>
   
       <!-- Lista de los Gastos -->
       <div class="mb-6">
@@ -113,10 +113,10 @@
       montoError.value = 'El monto debe ser un número positivo mayor a cero';
       return;
     }
-    if (!montoGasto.value > presupuestoRestante.value){
+    if (montoGasto.value > presupuestoRestante.value) {
         montoError.value = 'El gasto es superior al presupuesto restante';
         return;
-    }
+  }
   
     gastos.value.push({
       descripcion: descripcionGasto.value,
