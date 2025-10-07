@@ -22,10 +22,10 @@
 </template>
 
 <script setup>
-import { ref, defineEmits} from 'vue';
+import { ref, defineEmits, toRef} from 'vue';
 
 const emit = defineEmits(['login-success', 'show-register']);
-const loginUsername = re('');
+const loginUsername = ref('');
 const loginPassword = ref('');
 const loginError = ref('');
 
