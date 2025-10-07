@@ -30,7 +30,7 @@
         <button @click="addGasto" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Agregar Gasto</button>
       </div>
   
-      <!-- Lista de Gastos -->
+      <!-- Lista de los Gastos -->
       <div class="mb-6">
         <h3 class="text-lg font-semibold mb-2">Lista de Gastos</h3>
         <ul class="divide-y divide-gray-200">
@@ -41,7 +41,7 @@
         </ul>
       </div>
   
-      <!-- Resumen de Presupuesto -->
+      <!-- Resumen del Presupuesto -->
       <div>
         <h3 class="text-lg font-semibold mb-2">Resumen</h3>
         <p><strong>Presupuesto Inicial:</strong> ${{ presupuestoInicial }}</p>
@@ -112,6 +112,10 @@
     if (!montoGasto.value || montoGasto.value <= 0) {
       montoError.value = 'El monto debe ser un número positivo mayor a cero';
       return;
+    }
+    if (!montoGasto.value > presupuestoRestante.value){
+        montoError.value = 'El gasto es superior al presupuesto restante';
+        return;
     }
   
     gastos.value.push({
